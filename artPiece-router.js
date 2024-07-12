@@ -232,7 +232,7 @@ function respondArtworks(req, res, next) {
 		html: () => {  
             console.log("hello u are in Html artworks response");
             //res.render("pages/artworks", {  artworks: res.artworks, qstring: req.qstring, current: req.query.page });
-            res.render("pages/artworks2", {  artworks: res.artworks, qstring: req.qstring, current: req.query.page });
+            res.render("pages/artworks3", {  artworks: res.artworks, qstring: req.qstring, current: req.query.page });
         },
         "application/json": function () {
 

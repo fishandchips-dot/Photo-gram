@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title Art Gallery
+    link(href="css/artworks2.css" rel="stylesheet")
+  body
+    include ../partials/header
+    br
+
+    p.heading Gallery
+    
+    //- div
+    //-     .img-box
+    //-     img(src="https://picsum.photos/350/250?image=444" alt="")
+    //-     .transparent-box
+    //-       .caption
+    //-         p Library
+    //-         p.opacity-low Architect Design
+
+        
+    .gallery-image     
+        each artwork in artworks
+            a(href="/artworks/" + artwork._id, target="_self")
+                div.img-box
+                    img(src=artwork.Poster, alt='' , id=artwork._id)
+                    .transparent-box
+                        .caption
+                            p #{artwork.Title}
+                            p.opacity-low #{artwork.Artist}
+                            p.opacity-low Year: #{artwork.Year}
