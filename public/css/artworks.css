@@ -1,0 +1,46 @@
+
+.image-center {
+  column-count: 1;
+  /* background-color: black; */
+}
+
+#image-container {
+  column-count: 3;
+  
+  width: 70%;
+  margin: 5% auto; 
+  background-color: yellow;
+}
+
+
+
+#image-container img {
+  width:90%;
+  margin: 10px; 
+}  
+
+
+.imagesControllers{
+  /* background-color: green; */
+
+  width: 60%;
+  margin: 5% auto;
+  display: flex;
+  justify-content: flex-end;
+}
+ 
+
+/* .image-container {
+  column-count: 1; 
+  column-gap: 10px;
+  background-color: red;
+  width: 100%;
+}*/
+
+
+
+  /* @media (max-width: 600px) {
+    .image-container {
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+  } */
