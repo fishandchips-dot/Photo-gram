@@ -1,0 +1,26 @@
+html
+  head
+    title Store Manager User Search Results
+    
+  body
+    include ../partials/header
+    br
+    
+    div.image-center
+      div#image-container
+      
+      div.imagesControllers
+        button(id="loadmore") loadmore
+        //- button(id="loadAlotMore") loadmore+
+         
+        if current > 1
+          - let url = "/artworks?page=" + (current-1)
+          - if(qstring.length > 0){ url += "&" + qstring; }
+          a(href=url) Previous
+          | 
+        - url = "/artworks?page=" + (current+1)
+        - if(qstring.length > 0){ url += "&" + qstring; }
+        a(href=url) Next
+        
+    script(src="js/artWorks.js")
+    link(rel="stylesheet", href="css/artworks.css")
