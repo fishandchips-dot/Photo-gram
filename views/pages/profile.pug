@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title Clickable Buttons with Notifications
+  body
+    include ../partials/header
+    br
+
+    h1 Welcome to your Profile
+    br
+    button(type="button", id="switchButton", onclick="switchAccountType()") Switch Account type  
+
+    button(type="button") Search Artworks
+
+    if isArtist
+      button(type="button", onclick="window.location.href='/addArtwork'") Add Artwork
+
+      button(type="button") Add Workshop
+    br 
+       
+    div#notification-container
+      p Notifications will appear here.
+    div#likes-container
+      p Liked artworks will appear here.      
+    div#follow-container
+      p artist u follow will appear here
+    div#review-container
+      p reviews you have made will appear here
+  script(src="js/profile.js")

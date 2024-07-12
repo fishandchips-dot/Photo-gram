@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title Login Page
+  body
+    h1 Login
+    
+    //- expired-> return false prevents the extra functionality of form tag from executing
+    div
+      label(for="username") Username:
+      input(type="text", id="username", name="username", required, oninput="validateFields()")
+    
+    div
+      label(for="password") Password:
+      input(type="password", id="password", name="password", required, oninput="validateFields()")
+    
+    button(type="button", id="Button", onclick="login()" disabled) Login
+
+    p Don't have an account? 
+        button(type="button")
+            a(href="/signup") Sign up
+
+    script(src="js/userVerification.js")

@@ -1,0 +1,40 @@
+html
+  head
+    title My Pug File
+
+  body
+    include ../partials/header
+
+    h1 hello you can add artworks here
+
+    label(for='ArtWorkTitle') ArtWork Title
+    input(type='text', id='ArtWorkTitle', placeholder='ArtWork Title')
+    br
+
+    //- label(for='ArtworkArtist') Artwork Artist
+    //- input(type='text', id='ArtworkArtist', placeholder='Artwork Artist')
+    //- br
+
+    label(for='YearCreated') Year Created
+    input(type='text', id='YearCreated', placeholder='Year created')
+    br
+
+    label(for='ArtworkCategory') Artwork Category
+    input(type='text', id='ArtworkCategory', placeholder='Artwork category')
+    br
+
+    label(for='ArtworkMedium') Artwork Medium
+    input(type='text', id='ArtworkMedium', placeholder='Artwork medium')
+    br
+
+    label(for='Description') Description
+    input(type='text', id='Description', placeholder='Description')
+    br
+
+    label(for='LinkToArtworkPoster') Link to Artwork Poster
+    input(type='text', id='LinkToArtworkPoster', placeholder='Link to artwork poster')
+    br
+
+    button(type='button', onclick='sendArtworkForProcessing()') Submit
+
+    script(src="js/addArtwork.js")

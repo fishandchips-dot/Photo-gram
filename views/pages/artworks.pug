@@ -1,0 +1,31 @@
+html
+  head
+    title Store Manager User Search Results
+    link(rel="stylesheet", href="css/artworks.css")
+  body
+    include ../partials/header
+    br
+    
+    div
+      div#image-container
+        each artwork in artworks
+          //- a(href="/artworks/" + artwork._id) #{artwork.Title}
+          div
+            a(href="/artworks/" + artwork._id, target="_self")
+              img(src=artwork.Poster, alt=artwork.Title , id=artwork._id)
+          
+        
+      //- potentially large change 
+      //-  Next and previous buttons need to be handled by js otherwise my new js functionality doesnt work
+      //-  as of now the artworks.js artlist array keeps getting refreshed if next/previous pressed
+      div
+        if current > 1
+          - let url = "/artworks?page=" + (current-1)
+          - if(qstring.length > 0){ url += "&" + qstring; }
+          a(href=url) Previous
+          | 
+        - url = "/artworks?page=" + (current+1)
+        - if(qstring.length > 0){ url += "&" + qstring; }
+        a(href=url) Next
+
+  script(src="js/artWorks.js") 

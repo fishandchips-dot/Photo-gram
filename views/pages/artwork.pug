@@ -1,0 +1,35 @@
+html
+  head
+    title Store Manager
+    link(rel="stylesheet", href="css/artwork.css") 
+  body
+    include ../partials/header
+    br
+    | Title: #{artwork.Title}
+    br
+    | ID in database: #{artwork._id}
+    br
+    | Artist:
+    a(href="/artists/" + artist._id) #{artist.username}
+    br
+
+    // Hidden input field for artwork ID
+    input(type="hidden", id="artworkId", value=artwork._id)
+
+    br
+    div.image
+      div.inner
+        img(src=artwork.Poster, alt=artwork.Title)
+    br
+    br
+    button(type="button", id="Button", onclick="") like
+    br
+    if reviewable
+        div(id="reviewSection")
+            | Write your review:
+            br
+            textarea(id="reviewTextArea", rows="4", cols="50")
+            br
+            button(type="button", id="ReviewButton", onclick="reviewed()") Review
+
+    script(src="js/artWork.js")
