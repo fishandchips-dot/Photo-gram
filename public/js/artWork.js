@@ -6,6 +6,10 @@
 
 
 
+// make a function to get all reviews for an artwork
+
+
+
 function reviewed(){
 
     const artworkId = document.getElementById('artworkId').value;
@@ -55,12 +59,55 @@ function reviewed(){
 
 
 
+var details_button = document.getElementById('showDetailsButton');
+details_button.onclick = showDetails;
+
+var reviews_button = document.getElementById('showReviewsButton');
+reviews_button.onclick = showReviews;
 
 
+function showDetails () {
+    //TODO all the styles are returning blank , find out why
+    
+    console.log("here"+ document.getElementById("overlap-container2").style.width);
 
+    // re set the styles otherwise u get null for the values for some reason
+    if(document.getElementById("overlap-container2").style.width == ''){
+        document.getElementById("overlap-container2").style.width = 0+'%';
+        document.getElementById("overlap-container2").style.transition = 'all 1s';
+    }
+    
+    document.getElementById("details").style.zIndex = 1;
+    document.getElementById("reviews").style.zIndex = 0;
+   
+    console.log( document.getElementById("overlap-container2").style.width);
 
+    if(document.getElementById("overlap-container2").style.width == '0%'){ // expand transition 
 
+        document.getElementById("overlap-container2").style.width = '30%';
+        document.getElementById('overlap-container2').style.transition = 'all 1s';
+    }
+   
 
+}
 
+function showReviews (){
+    console.log("here"+ document.getElementById("overlap-container2").style.width);
 
+    // re set the styles otherwise u get null for the values for some reason
+    if(document.getElementById("overlap-container2").style.width == ''){
+        document.getElementById("overlap-container2").style.width = 0+'%';
+        document.getElementById("overlap-container2").style.transition = 'all 1s';
+    }
+    
+    document.getElementById("details").style.zIndex = 0;
+    document.getElementById("reviews").style.zIndex = 1;
+   
+    console.log( document.getElementById("overlap-container2").style.width);
 
+    if(document.getElementById("overlap-container2").style.width == '0%'){ // expand transition 
+
+        document.getElementById("overlap-container2").style.width = '30%';
+        document.getElementById('overlap-container2').style.transition = 'all 1s';
+    }
+}

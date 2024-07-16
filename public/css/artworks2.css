@@ -17,14 +17,14 @@ body {
     color: white;
 }
 
-.gallery-image {
+#gallery-image {
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.gallery-image img {
+#gallery-image img {
   height: 250px;
   width: 350px;
   transform: scale(1.0);
@@ -55,7 +55,7 @@ body {
  
   height: 250px;
   width: 350px;
-  background-color:rgba(0, 0, 0, 0);
+  background-color:rgba(198, 57, 57, 0);
   position: absolute;
   top: 0;
   left: 0;

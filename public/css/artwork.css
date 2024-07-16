@@ -22,3 +22,101 @@
     height: auto;
     object-fit: cover;
   }
+
+/* revision starts here */
+
+  #image-block{
+    display: flex;
+    justify-content: center;
+  }
+
+  .inner-block1 {
+
+    background-color: yellow;
+    width: 50%;
+  }
+
+
+  /* .overlap-container{
+    width: 100%;
+    height: 100%;
+  } */
+
+  .inner-block1 img{
+    width: 100%;
+    height: 100%;
+  }
+  
+
+
+/* #showDetailsButton{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+#showReviewsButton{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 4;
+} */
+
+
+.overlap-buttons{
+  display: flex;
+  align-items: center;
+  /* justify-content: ; */
+  background-color: aqua;
+}
+
+.overlap-buttons button{
+  height: 20%;
+  width: 100%;
+}
+
+
+#overlap-container2{
+  position:relative;
+  width: 0%;
+  
+  display: grid; /*required to overlap items  */
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: repeat(3, 1fr);
+
+}
+
+
+#details {
+  /* width: 100%;
+  height: 100%; */
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 4;
+
+  background-color: red;
+  z-index: 4;
+
+  overflow: hidden;
+  
+  /* opacity: 0; */
+}
+
+#reviews{
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 4;
+
+  background-color: blueviolet;
+  z-index: 3;
+  
+  /* opacity: 1; */
+}
+
+
+
+
+

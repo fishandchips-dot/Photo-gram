@@ -3,6 +3,7 @@ html
   head
     title Art Gallery
     link(href="css/artworks2.css" rel="stylesheet")
+    
   body
     include ../partials/header
     br
@@ -17,14 +18,24 @@ html
     //-         p Library
     //-         p.opacity-low Architect Design
 
-        
-    .gallery-image     
+    // TODO: 
+    //-   take the links from the images turn it into a pug var
+    //- then make a async function that take the link as an argument
+    //- have the function load the image page into a mini section when pressed 
+    //- look at the karthik tab has ai inspiration  
+
+    #gallery-image     
         each artwork in artworks
-            a(href="/artworks/" + artwork._id, target="_self")
-                div.img-box
-                    img(src=artwork.Poster, alt='' , id=artwork._id)
-                    .transparent-box
-                        .caption
-                            p #{artwork.Title}
-                            p.opacity-low #{artwork.Artist}
-                            p.opacity-low Year: #{artwork.Year}
+          - var currentUrl = "/artworks/" + artwork._id
+            a(href=currentUrl id=artwork._id onload='')
+              div(class='img-box' id=artwork._id)
+                img(src=artwork.Poster, alt='' )
+                .transparent-box
+                  .caption
+                    p #{artwork.Title}
+                    p.opacity-low #{artwork.Artist}
+                    p.opacity-low Year: #{artwork.Year}
+    //- a(href=currentUrl, target="_self" id=artwork._id onload='')
+    script(src="js/artWorks.js")
+
+   
