@@ -13,7 +13,7 @@
     
 //     console.log("Clicked element ID:", this.id);
 
- 
+//     this.style.width = '700px';
 //     this.style.margin = '0% 20%';
   
 // }

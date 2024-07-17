@@ -24,7 +24,7 @@ html
     //- have the function load the image page into a mini section when pressed 
     //- look at the karthik tab has ai inspiration  
 
-    #gallery-image     
+    .gallery-image     
         each artwork in artworks
           - var currentUrl = "/artworks/" + artwork._id
             a(href=currentUrl id=artwork._id onload='')
