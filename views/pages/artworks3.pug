@@ -18,17 +18,12 @@ html
     //-         p Library
     //-         p.opacity-low Architect Design
 
-    // TODO: 
-    //-   take the links from the images turn it into a pug var
-    //- then make a async function that take the link as an argument
-    //- have the function load the image page into a mini section when pressed 
-    //- look at the karthik tab has ai inspiration  
 
     .gallery-image     
         each artwork in artworks
           - var currentUrl = "/artworks/" + artwork._id
-            a(href=currentUrl id=artwork._id onload='')
-              div(class='img-box' id=artwork._id)
+            //- a(href=currentUrl id=artwork._id onload='')
+            div(class='img-box' id=artwork._id)
                 img(src=artwork.Poster, alt='' )
                 .transparent-box
                   .caption
@@ -36,6 +31,15 @@ html
                     p.opacity-low #{artwork.Artist}
                     p.opacity-low Year: #{artwork.Year}
     //- a(href=currentUrl, target="_self" id=artwork._id onload='')
+
+    // TODO: replace this with an iframe, right now its not loading its js
+    //- 
+      study iframe
+      study media queries
+      study css: transform-> translate()
+    div#display-box 
+      iframe(id="image-window" src="") 
+
     script(src="js/artWorks.js")
 
    

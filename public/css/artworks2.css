@@ -86,3 +86,52 @@ body {
 .opacity-low {
   opacity: 0.5;
 }
+
+
+
+#display-box{
+  
+  position: fixed;
+ 
+  top: 50%;
+  left: 50%;
+
+  
+
+  /* max-width: 36vw;
+  max-height: 80vh; */
+  width: 36vw;
+  height: 80vh;
+
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+
+
+  
+
+  background-color: blueviolet;
+  border: 3px solid #73AD21;
+
+}
+
+ /* top: 10%;
+ 
+  left: 16%; */
+  
+  
+/* width: 66vw;
+  height: 80vh; */
+
+/* width: 800px; 
+  height: 800px; */
+
+
+  #display-box iframe {
+
+  width: 100% ;
+  height:100%;
+
+  overflow: clip;
+  /* border: none; */
+}
+
