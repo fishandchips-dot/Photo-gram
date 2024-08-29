@@ -1,40 +1,50 @@
 html
   head
     title My Pug File
+    link(rel="stylesheet", href="css/addArtwork.css") 
+
 
   body
     include ../partials/header
 
-    h1 hello you can add artworks here
+    //- - var list = ["ArtWorkTitle","YearCreated", "ArtworkCategory", "ArtworkMedium","Description", "LinkToArtworkPoster"]
 
-    label(for='ArtWorkTitle') ArtWork Title
-    input(type='text', id='ArtWorkTitle', placeholder='ArtWork Title')
-    br
+    div.login-box
+      
+      h2 Add Artwork
+      form        
+        //- div.user-box
+        //-   input(type='text', name='', readonly onfocus="this.removeAttribute('readonly');", required)
+        //-   label Username
+        //- div.user-box
+        //-   input(type='text', name='', readonly onfocus="this.removeAttribute('readonly');", required)
+        //-   label Password
 
-    //- label(for='ArtworkArtist') Artwork Artist
-    //- input(type='text', id='ArtworkArtist', placeholder='Artwork Artist')
-    //- br
+        div.user-box
+          input(type='text', id='ArtWorkTitle', readonly onfocus="this.removeAttribute('readonly');")
+          label ArtWork Title
 
-    label(for='YearCreated') Year Created
-    input(type='text', id='YearCreated', placeholder='Year created')
-    br
+        div.user-box
+          input(type='text', id='YearCreated', readonly onfocus="this.removeAttribute('readonly');")
+          label Year Created
 
-    label(for='ArtworkCategory') Artwork Category
-    input(type='text', id='ArtworkCategory', placeholder='Artwork category')
-    br
+        div.user-box
+          input(type='text', id='ArtworkCategory', readonly onfocus="this.removeAttribute('readonly');")
+          label Artwork Category
 
-    label(for='ArtworkMedium') Artwork Medium
-    input(type='text', id='ArtworkMedium', placeholder='Artwork medium')
-    br
+        div.user-box
+          input(type='text', id='ArtworkMedium', readonly onfocus="this.removeAttribute('readonly');")
+          label Artwork Medium
 
-    label(for='Description') Description
-    input(type='text', id='Description', placeholder='Description')
-    br
+        div.user-box
+          input(type='text', id='Description', readonly onfocus="this.removeAttribute('readonly');")
+          label Description
 
-    label(for='LinkToArtworkPoster') Link to Artwork Poster
-    input(type='text', id='LinkToArtworkPoster', placeholder='Link to artwork poster')
-    br
+        div.user-box
+          input(type='text', id='LinkToArtworkPoster', readonly onfocus="this.removeAttribute('readonly');")
+          label Link to Artwork Poster
+        
+        button(type='button', onclick='sendArtworkForProcessing()') Submit
 
-    button(type='button', onclick='sendArtworkForProcessing()') Submit
 
-    script(src="js/addArtwork.js")
+  script(src="js/addArtwork.js")

@@ -3,6 +3,8 @@ html
   head
     title Art Gallery
     link(href="css/artworks2.css" rel="stylesheet")
+    //- link(rel="stylesheet", href="css/artwork.css")
+
     
   body
     include ../partials/header
@@ -22,24 +24,34 @@ html
     .gallery-image     
         each artwork in artworks
           - var currentUrl = "/artworks/" + artwork._id
-            //- a(href=currentUrl id=artwork._id onload='')
-            div(class='img-box' id=artwork._id)
-                img(src=artwork.Poster, alt='' )
-                .transparent-box
-                  .caption
-                    p #{artwork.Title}
-                    p.opacity-low #{artwork.Artist}
-                    p.opacity-low Year: #{artwork.Year}
-    //- a(href=currentUrl, target="_self" id=artwork._id onload='')
+            a(href=currentUrl target="_self" id=artwork._id onload='')
+              div(class='img-box' id=artwork._id)
+                  img(src=artwork.Poster, onerror='this.src = "images/imageLoadFailed.png"', alt='' )
+                  .transparent-box
+                    .caption
+                      p #{artwork.Title}
+                      p.opacity-low #{artwork.Artist}
+                      p.opacity-low Year: #{artwork.Year}
 
-    // TODO: replace this with an iframe, right now its not loading its js
-    //- 
-      study iframe
-      study media queries
-      study css: transform-> translate()
+    hr
+    
+    div.buttonContainer
+      if current > 1
+        - let url = "/artworks?page=" + (current-1)
+        - if(qstring.length > 0){ url += "&" + qstring; }
+          a(href=url) 
+            button Previous 
+      | 
+      - url = "/artworks?page=" + (current+1)
+      - if(qstring.length > 0){ url += "&" + qstring; }
+        a(href=url) 
+          button Next
+
+    // TODO: 
     div#display-box 
-      iframe(id="image-window" src="") 
-
+      //- iframe(id="image-window" src="") 
+      //- include artwork.pug(artwork=artwork, artist=artist)
     script(src="js/artWorks.js")
+    //- script(src="js/artWork.js")
 
    

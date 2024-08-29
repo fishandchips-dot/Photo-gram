@@ -2,28 +2,65 @@ doctype html
 html
   head
     title Clickable Buttons with Notifications
+    link(href="css/artworks2.css" rel="stylesheet")
+    link(href="css/profile.css" rel="stylesheet")
   body
     include ../partials/header
     br
 
-    h1 Welcome to your Profile
-    br
-    button(type="button", id="switchButton", onclick="switchAccountType()") Switch Account type  
+    div#profile
 
-    button(type="button") Search Artworks
+      div#profileTop
+        br
+        h2(id="username") #{username} 
+        
+        div#person-info 
+          span#followers 
+            p Followers
+            img( src="images/arrow.png" width="20px" height="20px" alt="")
+            p #{user.followers.length}
+          span#following
+            p Following
+            img(src="images/arrow.png" width="20px" height="20px" alt="") 
+            p #{user.followedArtists.length}
+          span#notifications
+            p Notifications
+            input( type="image"  id="" src="images/notifications.png" width="20px" height="20px" alt="Notifications")
 
-    if isArtist
-      button(type="button", onclick="window.location.href='/addArtwork'") Add Artwork
+        div#accountControls
+          span
+            button Search Artworks
+          if !isNotUser
+            span
+              button( id="switchButton", onclick="switchAccountType()") Switch Account type  
+            if isArtist
+              span
+              button( onclick="window.location.href='/addArtwork'") Add Artwork
+          if isNotUser
+            // Follow button
+            - let imgSrc = "images/redCross"
+            - imgSrc = "images/greenTick" 
+            
+            span
+            button(id="followButton"  onclick="toggleFollow()")
+              | #{followed ? imgSrc='Following' : imgSrc='Follow'}
+              -  imgsrc
 
-      button(type="button") Add Workshop
-    br 
-       
-    div#notification-container
-      p Notifications will appear here.
-    div#likes-container
-      p Liked artworks will appear here.      
-    div#follow-container
-      p artist u follow will appear here
-    div#review-container
-      p reviews you have made will appear here
+      div.profile-menu
+        span 
+          button(type="button" id="uploadsButton") Uploads
+        span
+          button(type="button" id="reviewedButton") Reviews
+      hr
+        //- span
+        //-   button(type="button" id="") Liked?
+      div.profile-photos
+        div#selfuploads
+        div(id="reviewedartworks" class="removeDisplay" )
+        //- div#pending
+
+
+
+
   script(src="js/profile.js")
+  script(src="js/artist.js")

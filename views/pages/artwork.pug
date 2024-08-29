@@ -1,62 +1,61 @@
 html
   head
     title Store Manager
-    link(rel="stylesheet", href="css/artwork.css") 
+    link(rel="stylesheet", href="css/artwork.css")
+
+    //- find header best practises
+    //- ////////////////////////////////////////////////////////////
+    // then read the git book github section
+     
   body
+
     include ../partials/header
     br
-    | Title: #{artwork.Title}
-    br
-    | ID in database: #{artwork._id}
-    br
-    | Artist:
-    a(href="/artists/" + artist._id) #{artist.username}
-    br
 
-    // Hidden input field for artwork ID
-    input(type="hidden", id="artworkId", value=artwork._id)
-
-    br
-    div.image
-      div.inner
-        img(src=artwork.Poster, alt=artwork.Title)
-    br
-    br
-    button(type="button", id="Button", onclick="") like
-    br
-    if reviewable
-        div(id="reviewSection")
-            | Write your review:
-            br
-            textarea(id="reviewTextArea", rows="4", cols="50")
-            br
-            button(type="button", id="ReviewButton", onclick="reviewed()") Review
-
-    p attach an event to the page size changing if less than minimum set fixed elemt dimensions else % based 
-
-    div
+    div.primeContainer
       div#image-block 
         div.inner-block1
-          img(src=artwork.Poster, alt=artwork.Title)  
-           
+          img(src=artwork.Poster, onerror='this.src = "images/imageLoadFailed.png"', alt=artwork.Title)  
+            
         div.overlap-buttons
           div
-            button(type="button", id="showDetailsButton", onclick="") Details
+            //- button(type="button", id="showDetailsButton", onclick="") Details
+            img( type="image"  id="showDetailsButton" src="images/description.png" width="20px" height="20px" alt="Show reviews") 
             br
-            button(type="button", id="showReviewsButton", onclick="") Reviews
+          div
+            //- button(type="button", id="showReviewsButton", onclick="") Reviews
+            img( type="image"  id="showReviewsButton" src="images/comments.png" width="20px" height="20px" alt="Show reviews") 
+          if reviewable
+            div
+              //- button(type="button", id="showReviewsButton", onclick="") Reviews
+              img( type="image"  id="addReviewButton" src="images/review.png" width="20px" height="20px" alt="Add a review") 
           
         
         div#overlap-container2
           div#details
-              | Title: #{artwork.Title}
-              br
-              | ID in database: #{artwork._id}
-              br
-              | Artist:
-              a(href="/artists/" + artist._id) #{artist.username}
-              br
+            div.infoDisplay
+              h2 Details 
+              //- hr(style="color: black")
+              p <b>Title</b>: #{artwork.Title}
+              p <b>Artist</b>:
+                a(href="/user/" + artist._id) #{artist.username}
+              p <b>Description</b>:  #{artwork.Description}
+              p <b>Upload year</b>:  #{artwork.Year}
+              p <b>Category</b>:  #{artwork.Category}
+
           div#reviews
+            div.infoDisplay
+              h2 Reviews 
+              each review in artwork.reviews
+                div(class="reviewUnit")
+                  p <b>#{review.reviewerName}</b>#{" : "}#{review.reviewText}    
+                br  
+          div#addReview
+            if reviewable
+              div(id="reviewSection" class="infoDisplay")
+                  h3 Add a review:
+                    //- input( type="text" id="reviewTextArea" width="100px" height="100px" placeholder="Lower case, all one word")
+                    textarea(id="reviewTextArea", rows="8", cols="30")
+                  button(type="button", id="ReviewButton", onclick="reviewed()") Review
           
-
-
   script(src="js/artWork.js")

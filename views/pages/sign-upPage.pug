@@ -2,22 +2,28 @@ doctype html
 html
   head
     title Sign Up Page
-  body
-    h1 Sign Up
-    
-    //- expired-> return false prevents the extra functionality of form tag from executing
-    div
-      label(for="username") Username:
-      input(type="text", id="username", name="username", required, oninput="validateFields()")
-    
-    div
-      label(for="password") Password:
-      input(type="password", id="password", name="password", required, oninput="validateFields()")
-    
-    button(type="button", id="Button", onclick="signup()" disabled) Sign up 
+    link(rel="stylesheet", href="css/login-signup.css")
 
-    p Already have an account? 
-      button(type="button")
-        a(href="/") Login
+    
+  body
+
+    div.login-box
+      h1 Sign Up
+      
+      //- expired-> return false prevents the extra functionality of form tag from executing
+      form
+
+        div.user-box
+          input(type="text", id="username", name="username", readonly onfocus="this.removeAttribute('readonly');", required, oninput="validateFields()")
+          label Username:
+
+        div.user-box
+          input(type="password", id="password", name="password", readonly onfocus="this.removeAttribute('readonly');", required, oninput="validateFields()")
+          label Password:
+
+        button(type="button", id="Button", onclick="signup()" disabled) Sign up 
+
+        div#changeStatus 
+          a(href="/") Already have an account? 
 
     script(src="js/userVerification.js")

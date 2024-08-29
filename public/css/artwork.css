@@ -1,96 +1,110 @@
-body {
-  /* overflow: clip; */
-  max-width: 100%;
-  max-height: 100%;
+@import "font.css";
 
-}
 
-.image {
+
+
+  .primeContainer {
     display: flex;
     justify-content: center;
-     
-    background-color: red;
-    width: 50%; 
-  }
-
-
-  .inner {
-    display: flex;
-    justify-content: center;
+    align-items: center;
+    height: 90vh;
     
-    background-color: yellow;
-    width: 50%;
-    
-    /* height: auto; */
   }
-
-  .inner img {
-    width: 50%;
-    height: auto;
-    object-fit: cover;
-  }
-
-/* revision starts here */
 
   #image-block{
+    position: relative;
     display: flex;
     justify-content: center;
+    
+    /* Caution: the value of this containers width is used as a reference for all child widths  */
+    min-width: 90vw;
+    min-height: 50vh;
+    max-height: 70vh;
+
   }
 
   .inner-block1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    background-color: yellow;
+    /* background-color: yellow; */
     width: 50%;
+
+    border: 2px solid #00A4BD;
+    border-width: 4px 4px 4px 4px;
+    border-color: black;
   }
-
-
-  /* .overlap-container{
-    width: 100%;
-    height: 100%;
-  } */
 
   .inner-block1 img{
-    width: 100%;
-    height: 100%;
+
+    min-width: 60%;
+    min-height: 60%;
+    max-width: 100%;
+    max-height: 100%;
   }
   
-
-
-/* #showDetailsButton{
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
-}
-
-#showReviewsButton{
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 3;
-  grid-row-end: 4;
-} */
 
 
 .overlap-buttons{
   display: flex;
   align-items: center;
-  /* justify-content: ; */
-  background-color: aqua;
+  /* justify-content: center; */
+  flex-direction: column;
+  /* background-color: aqua; */
+  width: 5%; 
+  height: relative;
+
+  border: 2px solid #00A4BD;
+  border-width: 4px 4px 4px 0px;
+  border-color: black;
 }
 
-.overlap-buttons button{
-  height: 20%;
+.overlap-buttons>div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+  /* background-color: brown; */
+  border-radius: 80%;
+  margin: 15%;
+  padding: 5%;
+}
+
+
+.overlap-buttons button {
+  height: 20px;
+  width: 30px;
 }
 
 
 #overlap-container2{
   position:relative;
+  /* width becomes 30% once buttons pressed */
   width: 0%;
-  
+
   display: grid; /*required to overlap items  */
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: repeat(3, 1fr);
+
+  /* overflow: hidden; */
+  /* overflow-y: auto; */
+  overflow: hidden;
+  overflow-wrap: break-word;
+
+  
+}
+
+
+#details, #reviews, #addReview {
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+  border: solid;
+  border-width: 4px 4px 4px 0px;
+  border-color: black;
+  
+  background-color:   #c3c8db;
 
 }
 
@@ -103,13 +117,13 @@ body {
   grid-row-start: 1;
   grid-row-end: 4;
 
-  background-color: red;
-  z-index: 4;
+  /* background-color: red; */
+  z-index: 1;
 
-  overflow: hidden;
+ 
   
-  /* opacity: 0; */
 }
+
 
 #reviews{
   grid-column-start: 1;
@@ -117,13 +131,70 @@ body {
   grid-row-start: 1;
   grid-row-end: 4;
 
-  background-color: blueviolet;
-  z-index: 3;
+  /* background-color: blueviolet; */
+  z-index: 0;
+
+}
+
+#addReview{
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 4;
+
+  /* background-color: rgb(49, 212, 65); */
+  z-index: 0;
+}
+
+
+.infoDisplay{
+  /* set as fraction of the image block container size to stop the text from wrapping */
+  min-width: 30%;
+  min-width: calc(90vw*0.20);
+  max-width: 45%;
+  min-height: 90%;
   
-  /* opacity: 1; */
+  /* background-color: rgb(19, 139, 139); */
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+
+  text-align: left;
+  /* overflow: auto; */
+  
+  
 }
 
 
 
 
+/* overflow hidden removes the need to inherit z-index of container block */
+.reviewUnit{
+  width: 100%;
+  
+  /* display: none; */
+  
+}
 
+
+#addReview > div {
+  padding-left: 3% ;
+}
+
+#addReview  button {
+  width: 80px;
+}
+
+
+
+.cancel{
+  width: 0%;
+  height: 0%;
+}
+
+.cancel::before {
+  content: url("../images/close.png");
+  /* background-color: brown; */
+  width:20px; 
+  height:20px;
+}

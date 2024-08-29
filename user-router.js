@@ -19,7 +19,7 @@ router.use(express.static("public")); // for the client js files
 //* /user/profile
 router.get("/profile", express.json(),loadProfile);
 
-//* this required an extra noun before the id if u didnt check the id type before calling the function in it , we checked it in the function btw 
+//* this required an extra noun before the id if u didnt check the id type before calling the function in it , we check it in the function btw 
 router.get("/:uid",express.json(), sendArtistPage);
 
 //* /artists/follow
@@ -148,6 +148,8 @@ async function verifySignup(req, res,next){
 // implement following artists
 // implement search artworks here
 
+//* loadprofile and send artist page could should have been made with the same logic systems
+
 function loadProfile(req, res, next){
 
 
@@ -162,11 +164,13 @@ function loadProfile(req, res, next){
             req.user = user;
 
             const isArtist = user.artist;
-
+            
+            console.log("username: ", user.username);
             console.log("yo here you are inside load profile");
             console.log("User found:", user);
+            
 
-            res.render("pages/profile", { isArtist : isArtist });
+            res.render("pages/profile", { isArtist : isArtist, isNotUser: false, user: user, username : user.username });
             next();
         
         })
@@ -194,6 +198,7 @@ function sendArtistPage(req, res, next) {
         
 		oid = new ObjectId(req.params.uid);
 	} catch (err) {
+        console.log("error converting user id");
 		next();
 		return;
         
@@ -226,8 +231,11 @@ function sendArtistPage(req, res, next) {
                         console.log("artist found: ",artist);
                         console.log("artworks of this artist: ",artworks);
                         
-                        res.render("pages/artist", { artperson:artist, artpersonWorks: artworks , followed: isfollower});
-                        
+                        // res.render("pages/artist", { artperson:artist, artpersonWorks: artworks , followed: isfollower});
+                       
+                        res.render("pages/profile", { isArtist : artist.artist, isNotUser: true, user: artist, username : artist.username, followed: isfollower });
+
+                        // res.render("pages/profile", { isArtist : isArtist, isNotUser: false, user: user, username : user.username });
                         
                         next();
                     }

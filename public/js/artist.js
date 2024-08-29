@@ -1,13 +1,20 @@
 
 
-
+// this script is utilised in the profile page
 
 
 function toggleFollow(){
 
-    const artistId = document.getElementById("artistId").value;
+    
+  let pathname = window.location.pathname;
+  const artistId = pathname.split("/")[2];
 
+  
+  
+  //const artistId = document.getElementById("artistId").value;
 
+  
+    
     
     let data = {
         artistId: artistId,
@@ -42,7 +49,7 @@ function toggleFollow(){
 
 
     // Send a Post request to the server containing the signup data
-    req.open("POST", "/artists/follow");
+    req.open("POST", "/user/follow");
     req.setRequestHeader('Content-Type', 'application/json');
     req.send(JSON.stringify(data));
 }

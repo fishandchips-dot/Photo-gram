@@ -52,3 +52,88 @@ function switchAccountType(){
     req.send();
 
 }
+
+
+
+let uploadedArtworks;
+let reviewedArtworks;
+
+
+
+function getUploadedArtworks() {
+
+    let username =document.getElementById("username").innerText;
+    console.log("userame " + username);
+
+    
+    let url = "/artworks/?Artist=" + username;
+
+
+    fetch(url)
+        .then(res => res.text())
+        .then((text) => {
+
+            //console.log(text);
+            const doc = new DOMParser().parseFromString(text, 'text/html');
+            
+            uploadedArtworks = doc.querySelector('.gallery-image').innerHTML;
+            document.getElementById("selfuploads").innerHTML = uploadedArtworks;
+            
+            document.getElementById("selfuploads").classList.add("gallery-image");
+        
+        });
+
+      
+}
+
+
+
+function getReviewedArtworks(){
+    let username =document.getElementById("username").innerText;
+    console.log("userame " + username);
+
+    
+    let url = "/artworks/?reviewerName=" + username;
+
+
+    fetch(url)
+        .then(res => res.text())
+        .then((text) => {
+
+            //console.log(text);
+            const doc = new DOMParser().parseFromString(text, 'text/html');
+            
+            reviewedArtworks = doc.querySelector('.gallery-image').innerHTML;
+            document.getElementById("reviewedartworks").innerHTML = reviewedArtworks;
+            
+            document.getElementById("reviewedartworks").classList.add("gallery-image");
+        
+        });
+} 
+
+
+getUploadedArtworks();
+getReviewedArtworks();
+
+
+
+let showuploadsButton = document.getElementById('uploadsButton');
+showuploadsButton.onclick = () => {
+    document.getElementById('reviewedartworks').classList.add("removeDisplay");
+    document.getElementById('selfuploads').classList.remove("removeDisplay"); // now this is shown
+
+}
+
+let showreviewedButton = document.getElementById('reviewedButton');
+showreviewedButton.onclick = () => {
+    document.getElementById('selfuploads').classList.add("removeDisplay"); 
+    document.getElementById('reviewedartworks').classList.remove("removeDisplay");
+    
+}
+
+
+
+
+
+
+

@@ -35,7 +35,7 @@ function login(){
                 
                 // redirect to main page
                 //*tried to make a second request here req2 but due to different html structure it couldnt replace the old one
-                window.location.replace("/dummy");
+                window.location.replace("/artworks");
             }
             else{
                 document.getElementById("username").value = '';
@@ -77,14 +77,27 @@ function signup(){
 
     //console.log();
 
-	// req.onreadystatechange = function() {
-	// 	if(this.readyState==4 && this.status==200){
+	req.onreadystatechange = function() {
+		if(this.readyState==4 && this.status==200){
 			
-	// 		// let recievedData = JSON.parse(this.responseText)
+			let recievedData = this.responseText
 
-    //         // console.log(recievedData);
-	// 	}
-	// }
+            console.log(recievedData);
+
+            if(recievedData === "action successful"){
+                
+                // redirect to main page
+                //*tried to make a second request here req2 but due to different html structure it couldnt replace the old one
+                window.location.replace("/artworks");
+            }
+            else{
+              
+    
+                alert("Error: "+recievedData);
+            }
+
+		}
+	}
 
     
     let data = {

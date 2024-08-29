@@ -80,7 +80,7 @@ app.use("/verification", notLoggedIn,  userRouter);
 app.use("/user", loggedIn,  userRouter);
 
 
-app.use("/artists", loggedIn,  userRouter);
+// app.use("/artists", loggedIn,  userRouter); //* now /user handles this route
 
 
 let artPieceRouter = require("./artPiece-router");

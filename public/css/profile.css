@@ -1,0 +1,107 @@
+@import "font.css";
+
+
+hr {
+    height:2px;
+    width: 95%;
+    margin: auto;
+    border-width:0;
+    background-color:#0e1010;
+    opacity: 0.2;
+    /* box-shadow: inset; */
+}
+
+img {
+    margin: auto;
+    width: 140%;
+}
+
+#profileTop, #profile{
+    margin: auto;
+    width: 98vw;
+} 
+
+#profileTop > *{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+
+#person-info{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    min-width: 10%;
+    /* background-color: aquamarine; */
+}
+
+#person-info > * {
+    display : flex;
+    margin: px 10px 5px 0px;
+    padding: 4px;
+    /* background-color: aliceblue; */
+    border-radius: 8%;
+
+}
+
+#person-info input, #person-info img{
+    margin: 0px 5px 0px 2px;
+}
+
+
+
+#profile{
+    /* min-height: 50vh; */
+    /* background-color: blue; */
+    
+}
+
+.profile-menu{
+    display: flex;
+    justify-content: center;
+    margin-top: 6%;
+    margin-bottom: 2% ;
+}
+
+
+.profile-photos > *{
+    position: absolute;
+}
+
+/* .profile-photos img{
+    width: 100%;
+} */
+
+#selfuploads,
+#reviewedartworks {
+ 
+    margin: auto; 
+    /* background-color: rgb(41, 141, 88); */
+    width: 98vw;
+    
+   
+    
+}
+
+#selfuploads {
+    z-index: 2;
+    /* background-color: yellow; */
+     
+}
+/* 
+#selfuploads img{
+    width: 100%;
+}  */
+
+
+#reviewedartworks {
+    z-index: 1;
+    /* background-color: brown; */
+}
+
+/* added to elements to remove them from display */
+.removeDisplay{
+    display: none;
+}

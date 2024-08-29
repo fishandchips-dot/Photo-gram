@@ -2,22 +2,22 @@ doctype html
 html
   head
     title Login Page
+    link(rel="stylesheet", href="css/login-signup.css")
   body
-    h1 Login
-    
-    //- expired-> return false prevents the extra functionality of form tag from executing
-    div
-      label(for="username") Username:
-      input(type="text", id="username", name="username", required, oninput="validateFields()")
-    
-    div
-      label(for="password") Password:
-      input(type="password", id="password", name="password", required, oninput="validateFields()")
-    
-    button(type="button", id="Button", onclick="login()" disabled) Login
+    div.login-box
+      h1 Login
 
-    p Don't have an account? 
-        button(type="button")
-            a(href="/signup") Sign up
+      form
+        div.user-box
+          //- pick a better attribute than onfocus to get read of readonly 
+          input(type="text", id="username", name="username", readonly onfocus="this.removeAttribute('readonly');", required, oninput="validateFields()")
+          label Username:
+        div.user-box
+          input(type="password", id="password", name="password", readonly onfocus="this.removeAttribute('readonly');", required, oninput="validateFields()")
+          label Password:
+        
+        button(type="button", id="Button", onclick="login()" disabled) Login
+        div#changeStatus 
+          a(href="/signup") Don't have an account?
 
     script(src="js/userVerification.js")

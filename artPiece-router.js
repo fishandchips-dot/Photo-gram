@@ -182,10 +182,17 @@ function queryParser(req, res, next) {
 	}
 
 
-	//* req.query.name is always equal to "?"
+	//* req.query.name/Artist/reviewerName is set to "?" if not set by browser
 	if (!req.query.Title) {
 		req.query.Title = "?";
 	}
+
+    if (!req.query.Artist) {
+		req.query.Artist = "?";
+	}
+    if(!req.query.reviewerName){
+        req.query.reviewerName = "?";
+    }
 
 	next();
 }
@@ -204,21 +211,56 @@ function loadArtworks(req, res, next) {
     console.log("show req.query after update");
     console.log( req.query);
 
-	artwork.find()
-		.where("Title").regex(new RegExp(".*" + req.query.Title + ".*", "i"))
-		.limit(amount)
-		.skip(startIndex)
-		.exec()
-		.then(result => {
-			res.artworks = result;
-			next();
-			return;
-		})
-		.catch(err => {
-			res.status(500).send("Error reading artworks.");
-			console.log(err);
-			return;
-		});
+
+    if( req.query.reviewerName !=="?" ) {
+        artwork.find({    
+            reviews: {
+                $elemMatch: { reviewerName: req.query.reviewerName }
+            }    
+            // $or: [
+            //     { reviews: { $elemMatch: { reviewerName: req.query.reviewerName } } },
+            //      { reviews: { $size: 0 } } // No reviews -> return all of them
+            // ]
+        })
+        // .where("_id").regex(new RegExp(".*" + req.query._id + ".*", "i"))
+        .where("Title").regex(new RegExp(".*" + req.query.Title + ".*", "i"))
+        .where("Artist").regex(new RegExp(".*" + req.query.Artist + ".*", "i"))
+        .limit(amount)
+        .skip(startIndex)
+        .exec()
+        .then(results => {
+            if(results.length === 0){
+                //* may be set a new req param to indicate no matching results  
+            }
+            res.artworks = results;
+                next();
+                return;
+        })
+        .catch(err => {
+            res.status(500).send("Error reading artworks.");
+            console.log(err);
+            return;
+        });
+            
+    }else { // performed when no reviewer specified
+        artwork.find()
+            // .where("_id").regex(new RegExp(".*" + req.query._id + ".*", "i"))
+            .where("Title").regex(new RegExp(".*" + req.query.Title + ".*", "i"))
+            .where("Artist").regex(new RegExp(".*" + req.query.Artist + ".*", "i"))
+            .limit(amount)
+            .skip(startIndex)
+            .exec()
+            .then(results => {
+                res.artworks = results;
+                next();
+                return;
+            })
+            .catch(err => {
+                res.status(500).send("Error reading artworks.");
+                console.log(err);
+                return;
+            });
+    }
 }
 
 //Uses the res.artworks property to send a response
