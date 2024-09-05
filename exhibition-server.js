@@ -171,12 +171,7 @@ mongoose.connect('mongodb://127.0.0.1/exhibition');
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', async function() {
-	let featured = [
-		{name: "Rusty Old Bike", price:15.99},
-		{name: "Broken Wooden Chair", price:56.99},
-		{name: "Rare Dinosaur Egg", price:19.99}
-	];
-	let storeMotto = "We break it, you buy it.";
+
 	//await mongoose.connection.db.collection("config").replaceOne({id:"mainpage"}, {id:"mainpage", featured: featured, motto: storeMotto}, {upsert:true})
 	app.listen(3000);
 	console.log("Server listening on port 3000");
